@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-import exceçao.ArestaComVerticeInvalidoException;
-import exceçao.VerticeDuplicadoException;
+import exception.ArestaComVerticeInvalidoException;
+import exception.VerticeDuplicadoException;
 
 
 

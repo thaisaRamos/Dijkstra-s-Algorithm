@@ -1,8 +1,8 @@
 package Logica;
 import java.util.List;
 
-import exceçao.ArestaComVerticeInvalidoException;
-import exceçao.VerticeDuplicadoException;
+import exception.ArestaComVerticeInvalidoException;
+import exception.VerticeDuplicadoException;
 
 
 

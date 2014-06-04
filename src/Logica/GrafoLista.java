@@ -2,7 +2,7 @@ package Logica;
 
 import java.util.List;
 
-import exceçao.ArestaComVerticeInvalidoException;
+import exception.ArestaComVerticeInvalidoException;
 
 
 public class GrafoLista implements Grafo{

@@ -1,4 +1,4 @@
-package exceçao;
+package exception;
 
 public class VerticeDuplicadoException  extends Exception{
 

@@ -11,8 +11,8 @@ import Logica.Aresta;
 import Logica.GrafoMatriz;
 import Logica.Vertice;
 
-import exceçao.ArestaComVerticeInvalidoException;
-import exceçao.VerticeDuplicadoException;
+import exception.ArestaComVerticeInvalidoException;
+import exception.VerticeDuplicadoException;
 
 
 

@@ -30,12 +30,12 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.text.html.HTMLEditorKit;
 
-import exceçao.ArestaComVerticeDuplicadoException;
-import exceçao.ArestaComVerticeInvalidoException;
-import exceçao.NenhumaRotaException;
-import exceçao.PesoInvalidoException;
-import exceçao.VerticeDuplicadoException;
-import exceçao.VerticeNaoExistenteExeception;
+import exception.ArestaComVerticeDuplicadoException;
+import exception.ArestaComVerticeInvalidoException;
+import exception.NenhumaRotaException;
+import exception.PesoInvalidoException;
+import exception.VerticeDuplicadoException;
+import exception.VerticeNaoExistenteExeception;
 import fachada.ServicosAeroporto;
 
 
