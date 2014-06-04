@@ -1,4 +1,4 @@
-package fachada;
+package Facade;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,26 +17,26 @@ import exception.VerticeDuplicadoException;
 import exception.VerticeNaoExistenteExeception;
 
 
-public class ServicosAeroporto {
+public class AirportServices {
 	Grafo g = new GrafoMatriz();
 	int i =0;
 	//uso do pradrao singleton 
-	private static ServicosAeroporto instance;
+	private static AirportServices instance;
 
-	private ServicosAeroporto(Grafo g) {
+	private AirportServices(Grafo g) {
 		if (g != null)
 			this.g = g;
 	}
 
-	public static ServicosAeroporto getInstance() {
+	public static AirportServices getInstance() {
 		if (instance == null)
-			instance = new ServicosAeroporto(null);
+			instance = new AirportServices(null);
 		return instance;
 	}
 
-	public static ServicosAeroporto getInstance(Grafo g) {
+	public static AirportServices getInstance(Grafo g) {
 		if (instance == null)
-			instance = new ServicosAeroporto(g);
+			instance = new AirportServices(g);
 		return instance;
 	}
 

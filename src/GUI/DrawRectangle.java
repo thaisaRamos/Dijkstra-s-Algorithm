@@ -15,7 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
-public class desenharRetangulo extends JPanel {
+public class DrawRectangle extends JPanel {
 
 		
 		public void paint(Graphics g)  

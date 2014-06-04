@@ -30,19 +30,20 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.text.html.HTMLEditorKit;
 
+import Facade.AirportServices;
+
 import exception.ArestaComVerticeDuplicadoException;
 import exception.ArestaComVerticeInvalidoException;
 import exception.NenhumaRotaException;
 import exception.PesoInvalidoException;
 import exception.VerticeDuplicadoException;
 import exception.VerticeNaoExistenteExeception;
-import fachada.ServicosAeroporto;
 
 
-public class JanelaPrincipal extends JFrame {
+public class MainWindow extends JFrame {
 
 	private JTabbedPane aba;
-	private ServicosAeroporto f;
+	private AirportServices f;
 	private JButton localiza;
 	private DefaultComboBoxModel modelo;
 	private DefaultComboBoxModel modelo2;
@@ -95,7 +96,7 @@ public class JanelaPrincipal extends JFrame {
 	JTextField cpffield = new JTextField(5);
 	
 	
-	public JanelaPrincipal() {
+	public MainWindow() {
         super("Viagens");
 		
         this.setSize(600,400);
@@ -105,7 +106,7 @@ public class JanelaPrincipal extends JFrame {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(false);
 		//GrafoLista gl = new GrafoLista();
-		f = ServicosAeroporto.getInstance();
+		f = AirportServices.getInstance();
 		
 		
 	}
@@ -117,71 +118,6 @@ public class JanelaPrincipal extends JFrame {
 		ButtonListener ouvinte = new ButtonListener();
 		
 		contentPane.add(aba);
-		
-		
-		
-		
-		//PRIMEIRA ABA
-		/*painel1 = new JPanel();
-		
-		JPanel painel111=new JPanel();
-		JPanel painel0 = new JPanel();
-		JPanel painel01= new JPanel();
-		
-		
-		painel1.setLayout(new BorderLayout());
-		
-		
-		
-		painel0.setLayout(new GridLayout(4, 2, 20, 70));
-		painel01.setLayout(new FlowLayout(FlowLayout.LEFT,5,0));
-		JTextField texto = new JTextField(5);
-		JPasswordField pass = new JPasswordField(5);
-		JLabel rotulo1 = new JLabel("Usuario");
-		JLabel rotulo2 = new JLabel("Senha");
-		texto.setSize(5,5);
-		
-		pass.setSize(5,5);
-		rotulo1.setLabelFor(texto);
-		rotulo2.setLabelFor(pass);
-		
-		painel0.add(rotulo1);
-		painel0.add(texto);
-		painel0.add(rotulo2);
-		painel0.add(pass);
-		
-		
-		painel111.setLayout(new BorderLayout());
-		
-		login = new JButton ("Login");
-		cadastra = new JButton("Cadastra");
-		
-		login.addActionListener(ouvinte);
-		cadastra.addActionListener(ouvinte);
-		
-		painel0.add(login);
-		painel0.add(cadastra);
-		
-		painel1.setLayout(new BorderLayout());
-		desenharRetangulo retangulo1 = new desenharRetangulo();
-
-		
-		painel1.add(retangulo1, BorderLayout.CENTER);
-		
-		painel1.add(painel0,BorderLayout.WEST);
-		
-		
-		
-		
-		
-		painel0.setBorder(
-				BorderFactory.createCompoundBorder(
-						BorderFactory.createTitledBorder("Minha conta"),
-						BorderFactory.createEmptyBorder(5,5,5,5))
-						
-				);
-	*/	
-	
 		
 		
 		
@@ -205,7 +141,7 @@ public class JanelaPrincipal extends JFrame {
 		telefone = new JLabel("Telefone");
 		fieldTelefone = new JTextField(5);
 		
-		endereco = new JLabel("Endere�o");
+		endereco = new JLabel("Endereco");
 		cpf = new JLabel("CPF:");
 		
 		end = new JTextField(5);
@@ -260,7 +196,7 @@ public class JanelaPrincipal extends JFrame {
 		//JLabel dataRetorno = new JLabel("Data do retorno");
 		//JTextField datRet = new JTextField(5);
 		
-		rb1 = new JRadioButton("Menor pre�o");
+		rb1 = new JRadioButton("Menor preco");
 		rb2 = new JRadioButton("Menor distancia");
 		rb3 = new JRadioButton("Menor tempo");
 		grup = new ButtonGroup();
@@ -345,7 +281,7 @@ public class JanelaPrincipal extends JFrame {
 		
 principal3.setLayout(new BorderLayout());
 		
-		desenharRetangulo retangulo3 =new desenharRetangulo();
+		DrawRectangle retangulo3 =new DrawRectangle();
 		principal3.add(retangulo3, BorderLayout.CENTER);
 		
 		principal3.add(painelCalcularV1,BorderLayout.WEST);
@@ -439,7 +375,7 @@ principal3.setLayout(new BorderLayout());
 		listaRota.addActionListener(ouvinte);
 		
 		JLabel tempo = new JLabel("Tempo de voo");
-		JLabel preco = new JLabel("Pre�o");
+		JLabel preco = new JLabel("Preco");
 		
 		fieldTempo = new JTextField();
 		fieldPreco = new JTextField();
@@ -568,7 +504,7 @@ principal3.setLayout(new BorderLayout());
 					this.appendLog("red", "Distancia deve ser um n�mero");
 				} catch (ArestaComVerticeDuplicadoException avd) {
 					
-					this.appendLog("red", "N�o � permitido adicionar rotas de um mesmo aeroporto");
+					this.appendLog("red", "Nao e permitido adicionar rotas de um mesmo aeroporto");
 				}
 				
 			}
@@ -593,7 +529,7 @@ principal3.setLayout(new BorderLayout());
 				f.removerRota((String)modelo.getSelectedItem(),(String)modelo2.getSelectedItem());
 				this.appendLog("green", "Rota removida");
 				} catch (NenhumaRotaException nre) {
-					this.appendLog("red", "N�o existem rotas a serem removidas");	
+					this.appendLog("red", "Nao existem rotas a serem removidas");	
 				}
 			}
 		
@@ -626,14 +562,14 @@ principal3.setLayout(new BorderLayout());
 					String nomeVert = (String)modeloDe.getSelectedItem();
 					String nomeVert2 =(String)modeloAte.getSelectedItem();
 					rotaMenorCaminho = f.calcularMenorCam(nomeVert,nomeVert2);
-					this.appendLog2("green", "Menor Rota � "+ rotaMenorCaminho.toString());
+					this.appendLog2("green", "Menor Rota e "+ rotaMenorCaminho.toString());
 				}
 				if(rb1.isSelected()){
 					List rotaMenorPreco = new ArrayList();
 					String nomeVert = (String)modeloDe.getSelectedItem();
 					String nomeVert2 =(String)modeloAte.getSelectedItem();
 					rotaMenorPreco = f.calcularMenorPreco(nomeVert,nomeVert2);
-					this.appendLog2("green", "Rota de menor Pre�o � "+ rotaMenorPreco.toString());
+					this.appendLog2("green", "Rota de menor Preco e "+ rotaMenorPreco.toString());
 					
 					/*
 				double peso=0;
